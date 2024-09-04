@@ -5,10 +5,10 @@
 #include <iostream>
 #include <string>
 
-class humanA {
+class HumanA {
 	public:
-		humanA(std::string name, Weapon &weapon);
-		~humanA();
+		HumanA(std::string name, Weapon &weapon);
+		~HumanA();
 		void attack( void );
 
 	private:
