@@ -16,4 +16,4 @@ class humanA {
 		Weapon &_weapon;
 };
 
-#endif //ZOMBIEA_HPP
+#endif
