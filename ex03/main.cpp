@@ -1,6 +1,6 @@
 #include "Weapon.hpp"
-#include "zombieA.hpp"
-#include "zombieB.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
 int main() {
 }
