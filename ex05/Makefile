@@ -1,5 +1,5 @@
-NAME = program
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+NAME = harl
+CPPFLAGS = -Wall -Wextra -Werror -std=c++17
 SRC = Harl.cpp main.cpp
 INC = Harl.hpp
 
