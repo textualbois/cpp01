@@ -29,21 +29,25 @@ int main( int argc, char *argv[] ) {
 		file.close();
 		return 1;
 	}
-	
+
 
 	std::stringstream buffer;
 	buffer << file.rdbuf();
 	file.close();
 
 	std::string input_str = buffer.str();
+	std::string result;
 	size_t pos = 0;
-	while ((pos = input_str.find(s1, pos)) != std::string::npos) {
-		input_str.replace(pos, s1.length(), s2);
-		pos += s2.length();
+	size_t lastPos = 0;
+	while ((pos = input_str.find(s1, lastPos)) != std::string::npos) {
+		result.append(input_str.substr(lastPos, pos - lastPos));
+		result.append(s2);
+		lastPos = pos + s1.length();
 	}
+	result.append(input_str.substr(lastPos));
 
-	outFile << input_str;
+	outFile << result;
 	outFile.close();
-	
+
 	return 0;
 }
