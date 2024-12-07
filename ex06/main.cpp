@@ -5,11 +5,9 @@ int	main(int argc, char *argv[]) {
 		std::cout << "Usage: ./ex06 [DEBUG|INFO|WARNING|ERROR]" << std::endl;
 		return 1;
 	}
-	Harl harl(argv[1]);
+	Harl harl;
 
-	harl.complain("DEBUG");
-	harl.complain("INFO");
-	harl.complain("WARNING");
-	harl.complain("ERROR");
+	harl.complain(argv[1]);
+
 	return 0;
 }

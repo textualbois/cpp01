@@ -7,25 +7,17 @@
 class Harl {
 	public:
 		Harl();
-		Harl( std::string filter );
 		~Harl();
 		void	complain( std::string level );
 
 	private:
-		enum {
-			DEBUG,
-			INFO,
-			WARNING,
-			ERROR
-		};
-		int	_filter;
+		void debug();
+		void info();
+		void warning();
+		void error();
 
-		int		get_level( std::string filter );
-		void	filter(void (Harl::*f_ptr)() , int level);
-		void	debug( void );
-		void	info( void );
-		void	warning( void );
-		void	error( void );
+		std::string _level[4];
+		void (Harl::*function[4])();
 };
 
 #endif //HARL_HPP

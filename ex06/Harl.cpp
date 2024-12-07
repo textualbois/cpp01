@@ -1,13 +1,5 @@
 #include "Harl.hpp"
 
-int		Harl::get_level(const std::string filter) {
-	if (filter == "WARNING") return WARNING;
-	if (filter == "INFO") return INFO;
-	if (filter == "DEBUG") return DEBUG;
-	if (filter == "ERROR") return ERROR;
-	return -1;
-}
-
 void	Harl::debug( void )
 {
 	std::cout << "[ DEBUG ]\n" << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger.\nI really do!" << std::endl;
@@ -29,40 +21,40 @@ void	Harl::error( void )
 }
 
 Harl::Harl() {
-}
+	_level[0] = "DEBUG";
+	_level[1] = "INFO";
+	_level[2] = "WARNING";
+	_level[3] = "ERROR";
 
-Harl::Harl(std::string filter) {
-	_filter = get_level(filter);
-	std::cout << "filter lvl is " << _filter << "\n";
+	function[0] = &Harl::debug;
+	function[1] = &Harl::info;
+	function[2] = &Harl::warning;
+	function[3] = &Harl::error;
 }
 
 Harl::~Harl() {
 }
 
-void	Harl::complain(std::string level) {
-	switch (get_level(level))
-	{
-	case DEBUG:
-		Harl::filter( &Harl::debug, DEBUG);
-		break;
-	case INFO:
-		Harl::filter( &Harl::info, INFO);
-		break;
-	case WARNING:
-		Harl::filter( &Harl::warning, WARNING);
-		break;
-	case ERROR:
-		Harl::filter( &Harl::error, ERROR);
-		break;
-	default:
-		std::cout << "No such debug level\n";
-		return ;
+void Harl::complain(std::string level) {
+	int i = 0;
+
+	while (i < 4 && level != _level[i]) {
+		i++;
 	}
-
-
-}
-
-void	Harl::filter( void (Harl::*f_ptr)(), int level ) {
-	if (level >= _filter)
-		(this->*f_ptr)();
+	switch (i) {
+		case 0:
+			(this->*function[0])();
+			[[fallthrough]];
+		case 1:
+			(this->*function[1])();
+			[[fallthrough]];
+		case 2:
+			(this->*function[2])();
+			[[fallthrough]];
+		case 3:
+			(this->*function[3])();
+			break;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+	}
 }
