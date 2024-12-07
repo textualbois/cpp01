@@ -18,14 +18,14 @@ int main( int argc, char *argv[] ) {
 	std::ifstream file(file_name);
 	if (!file.is_open())
 	{
-		std::cout << "file open error" << std::endl;
+		std::cout << "source file open error" << std::endl;
 		return 1;
 	}
 
 	std::ofstream outFile(new_file_name);
 	if (!outFile.is_open())
 	{
-		std::cout << "file open error" << std::endl;
+		std::cout << "destination file open error" << std::endl;
 		file.close();
 		return 1;
 	}
