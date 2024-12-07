@@ -3,20 +3,20 @@
 
 int main() {
 	std::string the_brain = "HI THIS IS BRAIN";
-	std::string the_brain2 = "HI THIS IS BRAIN2";
 	std::string *stringPTR = &the_brain;
 	std::string &stringREF = the_brain;
 
-	std::cout << "String value1:" << the_brain << std::endl;
-	stringREF = the_brain2; // the_brain = the_brain2
+	// Display the content of the string directly
+	std::cout << "Content directly: " << the_brain << std::endl;
 
-	std::cout << "String value1:" << the_brain << std::endl;
+	// Display the address of the string using the variable, pointer, and reference
+	std::cout << "Address via variable: " << &the_brain << std::endl;
+	std::cout << "Address via pointer: " << stringPTR << std::endl;
+	std::cout << "Address via reference: " << &stringREF << std::endl;
 
-	std::cout << "memory address1:" << &the_brain << std::endl;
-	std::cout << "memory address2:" << &the_brain2 << std::endl;
-	std::cout << "String value1:" << the_brain << std::endl;
-	std::cout << "String value2:" << the_brain2 << std::endl;
-	std::cout << "String pointer:" << *stringPTR << std::endl;
-	std::cout << "String reference:" << stringREF << std::endl;
+	// Display the content of the string using the pointer and reference
+	std::cout << "Content via pointer: " << *stringPTR << std::endl;
+	std::cout << "Content via reference: " << stringREF << std::endl;
+
 	return 0;
 }
